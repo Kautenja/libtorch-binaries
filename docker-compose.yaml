@@ -1,0 +1,17 @@
+---
+services:
+  ubuntu_22_04:
+    image: libtorch-factory:Ubuntu22.04
+    build:
+      context: .
+      dockerfile: dockerfiles/Ubuntu.22.04.Dockerfile
+  ubuntu_20_04:
+    image: libtorch-factory:Ubuntu20.04
+    build:
+      context: .
+      dockerfile: dockerfiles/Ubuntu.20.04.Dockerfile
+  ubuntu_18_04:
+    image: libtorch-factory:Ubuntu18.04
+    build:
+      context: .
+      dockerfile: dockerfiles/Ubuntu.18.04.Dockerfile
