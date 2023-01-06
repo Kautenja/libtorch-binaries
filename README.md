@@ -4,29 +4,24 @@ This repository provides tooling for compiling libtorch binaries.
 
 ## Binaries
 
-| libtorch | Architecture | OS    | Binary                                       | Python | Wheel                                       |
-|:---------|:-------------|:------|:---------------------------------------------|:-------|:--------------------------------------------|
-| 1.13.0   | aarch64      | Linux | [download][1_13_0_py38_aarch64_linux_binary] | 3.8    | [download][1_13_0_py38_aarch64_linux_wheel] |
-| 1.12.0   | aarch64      | Linux | [download][1_12_0_py38_aarch64_linux_binary] | 3.8    | [download][1_12_0_py38_aarch64_linux_wheel] |
-| 1.11.0   | aarch64      | Linux | [download][1_11_0_py38_aarch64_linux_binary] | 3.8    | [download][1_11_0_py38_aarch64_linux_wheel] |
-| 1.10.0   | aarch64      | Linux | [download][1_10_0_py38_aarch64_linux_binary] | 3.8    | [download][1_10_0_py38_aarch64_linux_wheel] |
-| 1.9.0    | aarch64      | Linux | [download][1_9_0_py38_aarch64_linux_binary]  | 3.8    | [download][1_9_0_py38_aarch64_linux_wheel]  |
+| libtorch | Architecture | OS    | Binary                                |
+|:---------|:-------------|:------|:--------------------------------------|
+| 1.13.0   | aarch64      | Linux | [download][1_13_0_py38_aarch64_linux] |
+| 1.12.0   | aarch64      | Linux | [download][1_12_0_py38_aarch64_linux] |
+| 1.11.0   | aarch64      | Linux | [download][1_11_0_py38_aarch64_linux] |
+| 1.10.0   | aarch64      | Linux | [download][1_10_0_py38_aarch64_linux] |
+| 1.9.0    | aarch64      | Linux | [download][1_9_0_py38_aarch64_linux]  |
 
 <!-- 1.13 -->
-[1_13_0_py38_aarch64_linux_wheel]: https://TODO.com
-[1_13_0_py38_aarch64_linux_binary]: https://TODO.com
+[1_13_0_py38_aarch64_linux]: https://github.com/Kautenja/libtorch-binaries/releases/download/v1.0.0/libtorch-shared-with-deps-aarch64-linux-1.13.0.zip
 <!-- 1.12 -->
-[1_12_0_py38_aarch64_linux_wheel]: https://github.com/Kautenja/libtorch-binaries/releases/download/v1.0.0/torch-1.12.0a0+git67ece03-cp38-cp38-linux_aarch64.whl
-[1_12_0_py38_aarch64_linux_binary]: https://github.com/Kautenja/libtorch-binaries/releases/download/v1.0.0/libtorch-aarch64-shared-without-deps-1.12.0.zip
+[1_12_0_py38_aarch64_linux]: https://github.com/Kautenja/libtorch-binaries/releases/download/v1.0.0/libtorch-shared-with-deps-aarch64-linux-1.12.0.zip
 <!-- 1.11 -->
-[1_11_0_py38_aarch64_linux_wheel]: https://github.com/Kautenja/libtorch-binaries/releases/download/v1.0.0/torch-1.11.0a0+gitbc2c6ed-cp38-cp38-linux_aarch64.whl
-[1_11_0_py38_aarch64_linux_binary]: https://github.com/Kautenja/libtorch-binaries/releases/download/v1.0.0/libtorch-aarch64-shared-without-deps-1.11.0.zip
+[1_11_0_py38_aarch64_linux]: https://github.com/Kautenja/libtorch-binaries/releases/download/v1.0.0/libtorch-shared-with-deps-aarch64-linux-1.11.0.zip
 <!-- 1.10 -->
-[1_10_0_py38_aarch64_linux_wheel]: https://github.com/Kautenja/libtorch-binaries/releases/download/v1.0.0/torch-1.10.0a0+git36449ea-cp38-cp38-linux_aarch64.whl
-[1_10_0_py38_aarch64_linux_binary]: https://github.com/Kautenja/libtorch-binaries/releases/download/v1.0.0/libtorch-aarch64-shared-without-deps-1.10.0.zip
+[1_10_0_py38_aarch64_linux]: https://github.com/Kautenja/libtorch-binaries/releases/download/v1.0.0/libtorch-shared-with-deps-aarch64-linux-1.10.0.zip
 <!-- 1.9 -->
-[1_9_0_py38_aarch64_linux_wheel]: https://github.com/Kautenja/libtorch-binaries/releases/download/v1.0.0/torch-1.9.0a0+gitd69c22d-cp38-cp38-linux_aarch64.whl
-[1_9_0_py38_aarch64_linux_binary]: https://github.com/Kautenja/libtorch-binaries/releases/download/v1.0.0/libtorch-aarch64-shared-without-deps-1.9.0.zip
+[1_9_0_py38_aarch64_linux]: https://github.com/Kautenja/libtorch-binaries/releases/download/v1.0.0/libtorch-shared-with-deps-aarch64-linux-1.9.0.zip
 
 ## Usage
 
@@ -103,13 +98,13 @@ The build routine will dump the C++ library and a Python wheel to the local
 To build for a specific version of PyTorch, one can use:
 
 ```shell
-./main.sh <IMAGE> "PYTORCH_BUILD_VERSION=<VERSION> ./build.sh"
+./main.sh <IMAGE> "PYTORCH_VERSION=<VERSION> ./build.sh"
 ```
 
 For instance, to compile `1.13.0` on `Ubuntu22.04`, one would use:
 
 ```shell
-./main.sh libtorch-factory:Ubuntu22.04 "PYTORCH_BUILD_VERSION=1.13.0 ./build.sh"
+./main.sh libtorch-factory:Ubuntu22.04 "PYTORCH_VERSION=1.13.0 ./build.sh"
 ```
 
 If more exotic modifications need to be made, one can open an interactive shell
