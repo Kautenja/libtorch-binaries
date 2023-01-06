@@ -16,17 +16,17 @@ This repository provides tooling for compiling libtorch binaries.
 [1_13_0_py38_aarch64_linux_wheel]: https://TODO.com
 [1_13_0_py38_aarch64_linux_binary]: https://TODO.com
 <!-- 1.12 -->
-[1_12_0_py38_aarch64_linux_wheel]: https://TODO.com
-[1_12_0_py38_aarch64_linux_binary]: https://TODO.com
+[1_12_0_py38_aarch64_linux_wheel]: https://github.com/Kautenja/libtorch-binaries/releases/download/v1.0.0/torch-1.12.0a0+git67ece03-cp38-cp38-linux_aarch64.whl
+[1_12_0_py38_aarch64_linux_binary]: https://github.com/Kautenja/libtorch-binaries/releases/download/v1.0.0/libtorch-aarch64-shared-without-deps-1.12.0.zip
 <!-- 1.11 -->
-[1_11_0_py38_aarch64_linux_wheel]: https://TODO.com
-[1_11_0_py38_aarch64_linux_binary]: https://TODO.com
+[1_11_0_py38_aarch64_linux_wheel]: https://github.com/Kautenja/libtorch-binaries/releases/download/v1.0.0/torch-1.11.0a0+gitbc2c6ed-cp38-cp38-linux_aarch64.whl
+[1_11_0_py38_aarch64_linux_binary]: https://github.com/Kautenja/libtorch-binaries/releases/download/v1.0.0/libtorch-aarch64-shared-without-deps-1.11.0.zip
 <!-- 1.10 -->
-[1_10_0_py38_aarch64_linux_wheel]: https://TODO.com
-[1_10_0_py38_aarch64_linux_binary]: https://TODO.com
+[1_10_0_py38_aarch64_linux_wheel]: https://github.com/Kautenja/libtorch-binaries/releases/download/v1.0.0/torch-1.10.0a0+git36449ea-cp38-cp38-linux_aarch64.whl
+[1_10_0_py38_aarch64_linux_binary]: https://github.com/Kautenja/libtorch-binaries/releases/download/v1.0.0/libtorch-aarch64-shared-without-deps-1.10.0.zip
 <!-- 1.9 -->
-[1_9_0_py38_aarch64_linux_wheel]: https://TODO.com
-[1_9_0_py38_aarch64_linux_binary]: https://TODO.com
+[1_9_0_py38_aarch64_linux_wheel]: https://github.com/Kautenja/libtorch-binaries/releases/download/v1.0.0/torch-1.9.0a0+gitd69c22d-cp38-cp38-linux_aarch64.whl
+[1_9_0_py38_aarch64_linux_binary]: https://github.com/Kautenja/libtorch-binaries/releases/download/v1.0.0/libtorch-aarch64-shared-without-deps-1.9.0.zip
 
 ## Usage
 
