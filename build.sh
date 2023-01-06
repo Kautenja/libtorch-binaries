@@ -1,86 +1,36 @@
 #!/usr/bin/env bash
 
-set -xe pipefail
-
-SRC_ROOT="$( cd "$(dirname "$0")" ; pwd -P)"
-PYTORCH_ROOT=${PYTORCH_ROOT:-$SRC_ROOT/pytorch}
-PYTORCH_BUILD_VERSION="${PYTORCH_BUILD_VERSION:-1.11.0}"
-LIBTORCH_VARIANT="${LIBTORCH_VARIANT:-shared-without-deps}"
-
-if [[ "$LIBTORCH_VARIANT" == *"cxx11-abi"* ]]; then
-  export _GLIBCXX_USE_CXX11_ABI=1
+# The version of libtorch to compile, may be overridden from the command line.
+PYTORCH_VERSION=${PYTORCH_VERSION:-1.11.0}
+# The architecture of the CPU.
+ARCHITECTURE=$(uname -m)
+# The kernel name of the operating system.
+KERNEL=$(uname -s | awk '{print tolower($0)}')
+# Determine the number of logical compute cores on the CPU.
+if [[ "$KERNEL" == "darwin" ]]; then
+    LOGICAL_CORES=$(sysctl -n hw.logicalcpu)
 else
-  export _GLIBCXX_USE_CXX11_ABI=0
+    LOGICAL_CORES=$(nproc --ignore=1)
 fi
+echo "Compiling v${PYTORCH_VERSION} for ${ARCHITECTURE}-${KERNEL} using ${LOGICAL_CORES} cores"
 
-checkout_pytorch() {
-  if [[ ! -d "$PYTORCH_ROOT" ]]; then
-    git clone https://github.com/pytorch/pytorch $PYTORCH_ROOT
-  fi
-  cd $PYTORCH_ROOT
-  if ! git checkout v${PYTORCH_BUILD_VERSION}; then
-    git checkout tags/v${PYTORCH_BUILD_VERSION}
-  fi
-  git submodule update --init --recursive
-}
+# The output zipfile for the compiled code.
+LIBRARY_FILENAME=libtorch-shared-with-deps-${ARCHITECTURE}-${KERNEL}-${PYTORCH_VERSION}.zip
+echo "Will save artifacts to: ${LIBRARY_FILENAME}"
 
-install_requirements() {
-  pip install setuptools==59.5.0
-  pip install -qr $PYTORCH_ROOT/requirements.txt
-}
+# Create the build directory first in case there are file-system issues.
+mkdir -p build
+mkdir -p pytorch-build
+# Clone PyTorch (this can be slow depending on internet connection.)
+git clone -b v${PYTORCH_VERSION} --recurse-submodule https://github.com/pytorch/pytorch.git
+# Install the necessary python requirements
+pip install setuptools==59.5.0
+pip install -qr pytorch/requirements.txt
+# Move into the build directory and compile the library.
+cd pytorch-build
+cmake -DBUILD_SHARED_LIBS:BOOL=ON -DCMAKE_BUILD_TYPE:STRING=Release -DPYTHON_EXECUTABLE:PATH=`which python3` -DCMAKE_INSTALL_PREFIX:PATH=../libtorch ../pytorch
+cmake --build . --target install -j${LOGICAL_CORES}
 
-build_pytorch() {
-  cd $PYTORCH_ROOT
-  python setup.py clean
-
-  if [[ $LIBTORCH_VARIANT = *"static"* ]]; then
-    STATIC_CMAKE_FLAG="-DTORCH_STATIC=1"
-  fi
-  time CMAKE_ARGS=${CMAKE_ARGS[@]} \
-  EXTRA_CAFFE2_CMAKE_FLAGS="${EXTRA_CAFFE2_CMAKE_FLAGS[@]} $STATIC_CMAKE_FLAG" \
-
-  python setup.py install --user
-}
-
-package_libtorch() {
-  cd $PYTORCH_ROOT
-
-  rm -rf libtorch
-  mkdir -p libtorch/{lib,bin,include,share}
-
-  # Copy over all lib files
-  cp -rv build/lib/*                libtorch/lib/
-  cp -rv build/lib*/torch/lib/*     libtorch/lib/
-
-  # Copy over all include files
-  cp -rv build/include/*            libtorch/include/
-  cp -rv build/lib*/torch/include/* libtorch/include/
-
-  # Copy over all of the cmake files
-  cp -rv build/lib*/torch/share/*   libtorch/share/
-
-  echo "${PYTORCH_BUILD_VERSION}" > libtorch/build-version
-  echo "$(cd $PYTORCH_ROOT && git rev-parse HEAD)" > libtorch/build-hash
-
-  PACKAGE_NAME=libtorch-$(uname -m)-$LIBTORCH_VARIANT-$PYTORCH_BUILD_VERSION.zip
-  zip -rq $SRC_ROOT/build/$PACKAGE_NAME $PYTORCH_ROOT/libtorch
-  sha256sum $SRC_ROOT/build/$PACKAGE_NAME > $SRC_ROOT/build/$PACKAGE_NAME.sha256
-}
-
-build_wheel() {
-  cd $PYTORCH_ROOT
-  python setup.py bdist_wheel
-
-  cd $PYTORCH_ROOT/dist
-  for file in *.whl; do
-    cp $file $SRC_ROOT/build
-    sha256sum $file > $SRC_ROOT/build/$file.sha256
-  done
-}
-
-mkdir -p $SRC_ROOT/build
-checkout_pytorch
-install_requirements
-build_pytorch
-package_libtorch
-build_wheel
+# Zip the code into the build directory.
+cd ../
+zip -r ./build/${LIBRARY_FILENAME} libtorch
