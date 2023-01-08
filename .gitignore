@@ -1,5 +1,8 @@
 # MARK: Project Files
 
+build
+pytorch
+pytorch-build
 libtorch-factory.zip
 
 # MARK: Python gitignore
