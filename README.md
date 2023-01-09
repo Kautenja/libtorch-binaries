@@ -10,9 +10,9 @@ This repository provides tooling for compiling libtorch binaries.
 | 1.12.0   | [download][1_12_0_py38_aarch64_linux] | [download][1_12_0_py38_arm64_macos] |
 | 1.11.0   | [download][1_11_0_py38_aarch64_linux] | [download][1_11_0_py38_arm64_macos] |
 | 1.10.0   | [download][1_10_0_py38_aarch64_linux] | [download][1_10_0_py38_arm64_macos] |
-| 1.9.0    | [download][1_9_0_py38_aarch64_linux]  | [download][1_9_0_py38_arm64_macos]  |
-| 1.8.0    | [download][1_8_0_py38_aarch64_linux]  | [download][1_8_0_py38_arm64_macos]  |
-| 1.7.0    | [download][1_7_0_py38_aarch64_linux]  | [download][1_7_0_py38_arm64_macos]  |
+| 1.9.0    | [download][1_9_0_py38_aarch64_linux]  | -                                   |
+| 1.8.0    | [download][1_8_0_py38_aarch64_linux]  | -                                   |
+| 1.7.0    | [download][1_7_0_py38_aarch64_linux]  | -                                   |
 
 <!-- 1.13.0 -->
 [1_13_0_py38_aarch64_linux]: https://github.com/Kautenja/libtorch-binaries/releases/download/v1.0.0/libtorch-shared-with-deps-aarch64-linux-1.13.0.zip
