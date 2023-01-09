@@ -4,34 +4,21 @@ This repository provides tooling for compiling libtorch binaries.
 
 ## Binaries
 
-| libtorch | Architecture | OS    | Binary                                |
-|:---------|:-------------|:------|:--------------------------------------|
-| 1.13.0   | aarch64      | Linux | [download][1_13_0_py38_aarch64_linux] |
-| 1.13.0   | arm64        | macOS | [download][1_13_0_py38_arm64_macos]   |
-| 1.12.1   | aarch64      | Linux | [download][1_12_1_py38_aarch64_linux] |
-| 1.12.1   | arm64        | macOS | [download][1_12_1_py38_arm64_macos]   |
-| 1.12.0   | aarch64      | Linux | [download][1_12_0_py38_aarch64_linux] |
-| 1.12.0   | arm64        | macOS | [download][1_12_0_py38_arm64_macos]   |
-| 1.11.0   | aarch64      | Linux | [download][1_11_0_py38_aarch64_linux] |
-| 1.11.0   | arm64        | macOS | [download][1_11_0_py38_arm64_macos]   |
-| 1.10.1   | aarch64      | Linux | [download][1_10_1_py38_aarch64_linux] |
-| 1.10.1   | arm64        | macOS | [download][1_10_1_py38_arm64_macos]   |
-| 1.10.0   | aarch64      | Linux | [download][1_10_0_py38_aarch64_linux] |
-| 1.10.0   | arm64        | macOS | [download][1_10_0_py38_arm64_macos]   |
-| 1.9.1    | aarch64      | Linux | [download][1_9_1_py38_aarch64_linux]  |
-| 1.9.1    | arm64        | macOS | [download][1_9_1_py38_arm64_macos]    |
-| 1.9.0    | aarch64      | Linux | [download][1_9_0_py38_aarch64_linux]  |
-| 1.9.0    | arm64        | macOS | [download][1_9_0_py38_arm64_macos]    |
-| 1.8.2    | aarch64      | Linux | [download][1_8_2_py38_aarch64_linux]  |
-| 1.8.2    | arm64        | macOS | [download][1_8_2_py38_arm64_macos]    |
-| 1.8.1    | aarch64      | Linux | [download][1_8_1_py38_aarch64_linux]  |
-| 1.8.1    | arm64        | macOS | [download][1_8_1_py38_arm64_macos]    |
-| 1.8.0    | aarch64      | Linux | [download][1_8_0_py38_aarch64_linux]  |
-| 1.8.0    | arm64        | macOS | [download][1_8_0_py38_arm64_macos]    |
-| 1.7.1    | aarch64      | Linux | [download][1_7_1_py38_aarch64_linux]  |
-| 1.7.1    | arm64        | macOS | [download][1_7_1_py38_arm64_macos]    |
-| 1.7.0    | aarch64      | Linux | [download][1_7_0_py38_aarch64_linux]  |
-| 1.7.0    | arm64        | macOS | [download][1_7_0_py38_arm64_macos]    |
+| libtorch | aarch64 Linux                         | arm64 macOS                         |
+|:---------|:--------------------------------------|:------------------------------------|
+| 1.13.0   | [download][1_13_0_py38_aarch64_linux] | [download][1_13_0_py38_arm64_macos] |
+| 1.12.1   | [download][1_12_1_py38_aarch64_linux] | [download][1_12_1_py38_arm64_macos] |
+| 1.12.0   | [download][1_12_0_py38_aarch64_linux] | [download][1_12_0_py38_arm64_macos] |
+| 1.11.0   | [download][1_11_0_py38_aarch64_linux] | [download][1_11_0_py38_arm64_macos] |
+| 1.10.1   | [download][1_10_1_py38_aarch64_linux] | [download][1_10_1_py38_arm64_macos] |
+| 1.10.0   | [download][1_10_0_py38_aarch64_linux] | [download][1_10_0_py38_arm64_macos] |
+| 1.9.1    | [download][1_9_1_py38_aarch64_linux]  | [download][1_9_1_py38_arm64_macos]  |
+| 1.9.0    | [download][1_9_0_py38_aarch64_linux]  | [download][1_9_0_py38_arm64_macos]  |
+| 1.8.2    | [download][1_8_2_py38_aarch64_linux]  | [download][1_8_2_py38_arm64_macos]  |
+| 1.8.1    | [download][1_8_1_py38_aarch64_linux]  | [download][1_8_1_py38_arm64_macos]  |
+| 1.8.0    | [download][1_8_0_py38_aarch64_linux]  | [download][1_8_0_py38_arm64_macos]  |
+| 1.7.1    | [download][1_7_1_py38_aarch64_linux]  | [download][1_7_1_py38_arm64_macos]  |
+| 1.7.0    | [download][1_7_0_py38_aarch64_linux]  | [download][1_7_0_py38_arm64_macos]  |
 
 <!-- 1.13.0 -->
 [1_13_0_py38_aarch64_linux]: https://github.com/Kautenja/libtorch-binaries/releases/download/v1.0.0/libtorch-shared-with-deps-aarch64-linux-1.13.0.zip
